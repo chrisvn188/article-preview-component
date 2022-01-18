@@ -1,0 +1,232 @@
+:root {
+  --clr-very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --clr-desaturated-dark-blue: hsl(214, 17%, 51%);
+  --clr-grayish-blue: hsl(212, 23%, 69%);
+  --clr-light-grayish-blue: hsl(210, 46%, 95%);
+  --clr-white: #fff;
+}
+
+/* basic resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.812rem;
+  line-height: 1.5;
+  padding: 0 2em;
+  background-color: var(--clr-light-grayish-blue);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  max-width: 24.5em;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
+.img-container {
+  max-height: 16.5em;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__image {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 1140px) {
+  .container {
+    max-width: 55em;
+  }
+  .card {
+    display: grid;
+    grid-template-areas: 'image-area right-content';
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 280px;
+  }
+
+  .img-container {
+    max-height: none;
+    grid-area: image-area;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .card__image {
+    height: 100%;
+    max-width: none;
+  }
+}
+
+.card__body {
+  padding: 2.5em 2.4em 0 2.4em;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 1140px) {
+  .card__body {
+    margin-bottom: 1.5em;
+  }
+}
+
+.card__heading {
+  font-size: 1rem;
+  color: var(--clr-very-dark-grayish-blue);
+}
+
+.card__paragraph {
+  color: var(--clr-desaturated-dark-blue);
+  margin-top: 1em;
+}
+
+@media (min-width: 1140px) {
+  .card__body {
+    padding: 2.5em 3.125em 0 3.125em;
+  }
+  .card__heading {
+    font-size: 1.175rem;
+  }
+}
+
+.avatar-container {
+  width: 3em;
+  height: 3em;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  border-radius: 0 0 10px 10px;
+  padding: 1.5em 2.4em;
+  position: relative;
+}
+
+.footer-text-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.social-links {
+  display: none;
+  gap: 1em;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--clr-very-dark-grayish-blue);
+  padding-left: 2.4em;
+  border-radius: 0 0 10px 10px;
+  z-index: 1;
+}
+
+.social-links.active {
+  display: flex;
+}
+
+@media (min-width: 1140px) {
+  .card__footer {
+    padding: 0 3.125em;
+    position: static;
+  }
+}
+
+.social-links > a {
+  display: flex;
+  align-items: center;
+}
+
+.social-links > p {
+  text-transform: uppercase;
+  color: var(--clr-light-grayish-blue);
+  letter-spacing: 5px;
+}
+
+.card__avatar {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.share-btn {
+  background-color: var(--clr-light-grayish-blue);
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@media (min-width: 1140px) {
+  .card__footer {
+    position: static;
+  }
+
+  .card__links {
+    position: relative;
+  }
+
+  .social-links::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 15px solid var(--clr-very-dark-grayish-blue);
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    position: absolute;
+    bottom: -1em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-links.active {
+    background-color: var(--clr-very-dark-grayish-blue);
+    width: fit-content;
+    height: fit-content;
+    padding: 1.2em 2em;
+    border-radius: 10px;
+    top: -6em;
+    left: -7.2em;
+  }
+}
+
+.share-btn > img {
+  vertical-align: middle;
+}
+
+.card__footer-text > p {
+  font-weight: 700;
+  color: var(--clr-very-dark-grayish-blue);
+}
+
+.card__footer-text > time {
+  color: var(--clr-desaturated-dark-blue);
+}
